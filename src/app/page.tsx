@@ -9,7 +9,7 @@ export default function Home() {
       <div className="max-h-screen mt-10 grid grid-cols-2 grid-rows-1 max-md:grid-cols-1 max-md:min-h-fit max-md:grid-rows-2">
         <div className="h-3/4 ml-12 px-6 flex flex-col mt-10 justify-center gap-10 max-md:h-full max-md:m-0">
           <h1 className="text-white text-8xl font-sans font-bold max-md:text-6xl">
-            Hi, I'm
+            Hi, I&apos;m
           </h1>
           <span className='mx-auto text-6xl text--500 font-bold h-1/4 text-white max-md:text-5xl'>
             <Typewriter
@@ -21,7 +21,7 @@ export default function Home() {
               cursorStyle='|'
               typeSpeed={50}
               deleteSpeed={50}
-            
+
             />
           </span>
           <div className='max-md:mt-10  max-md:flex justify-evenly'>
