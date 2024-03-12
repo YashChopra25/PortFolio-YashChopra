@@ -14,7 +14,7 @@ export default function Home() {
           <span className='mx-auto text-6xl text--500 font-bold h-1/4 text-white max-md:text-5xl'>
             <Typewriter
               cursorBlinking={true}
-              words={['Frontend Devloper', 'Backend Developer', 'UI Developer']}
+              words={['Frontend Devloper', 'Backend Developer', 'UI Developer',"Fast Learner"]}
               cursorColor='white'
               loop={false}
               cursor
@@ -30,7 +30,7 @@ export default function Home() {
           </div>
         </div>
         <div className="path mx-auto px-5 max-md:mt-5">
-          <Image src={DP} alt="yash chopra" />
+          <Image src={DP} alt="yash chopra" className='dd2'/>
         </div>
 
       </div>

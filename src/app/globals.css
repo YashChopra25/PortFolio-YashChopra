@@ -33,3 +33,10 @@ body {
   background-color: #1c1b23;
   border: 3px solid rgba(255, 0, 0, 0.548)
 }
+
+.dd {
+  filter: drop-shadow(50px 4px 6px black)
+}
+.dd2 {
+  filter: drop-shadow(50px 4px 6px white)
+}
