@@ -2,13 +2,15 @@ type ExperienceType = {
     position: string,
     company: string,
     keypoint: string[]
+    skills: string[]
 }
 export const ExperienceData: ExperienceType[] = [
     {
         position: "Intern - Full Stack Developer",
         company: "qunit technologies pvt. ltd | Remote | Jan 2024 | July 2024",
+        skills: ['nextjs,', 'nextAuth,', 'AWS,', 'MONGODB'],
         keypoint: [
-            " Designed and developed responsive user interfaces using Next.js framework and Tailwind CSS, ensuring a seamless and visually appealing user experience for a new e - commerce platform.",
+            " Designed and developed responsive user interfaces using Next.js framework and Tailwind CSS, ensuring a seamless and visually appealing user experience for a new online learning and teaching platform.",
 
             "Implemented serverless backend logic within Next.js API routes, utilizing AWS Lambda functions for dynamic data processing and integrating with MongoDB Atlas for database storage, contributing to the platform's scalability and performance optimization.",
 

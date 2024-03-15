@@ -8,6 +8,7 @@ import Education from '../_components/Education'
 import Experience from '../_components/Experience'
 
 const About = () => {
+
     return (
         <ChakraProvider>
 
