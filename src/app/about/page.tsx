@@ -17,33 +17,35 @@ const About = () => {
                 </div>
                 <div className='w-2/4 max-md:w-full '>
                     <h1 className='text-6xl font-bold font-sans max-md:text-center max-md:text-4xl max-md:px-3'>About Me</h1>
-                    <p className='my-3 text-lg font-medium leading-6 font-sans text-white/35 capitalize max-md:px-3'>
-                        Experienced full stack developer skilled in front-end technologies like HTML, CSS, JavaScript (React.js,Nextjs) and back-end technologies such as Node.js,Express.js and databases like  MongoDB,MySQL. Proficient in programming and passionate about creating efficient, user-friendly web applications. Constantly learning and adapting to new technologies to stay ahead in the ever-evolving tech landscape. </p>
-                    <Tabs position="relative" variant="unstyled" marginTop={15} borderColor={"red"} overflow={'hidden'}>
-                        <TabList gap={17} >
-                            <Tab>Skills</Tab>
-                            <Tab>Experience</Tab>
-                            <Tab>Education</Tab>
-                        </TabList>
-                        <TabIndicator
-                            mt="-1.5px"
-                            height="2px"
-                            bg="#f97316"
-                            borderRadius="1px"
-                        />
+                    <p className='my-3 text-lg font-medium leading-6 tracking-wide font-sans text-white/35 capitalize max-md:px-3'>
+                        Experienced full stack developer skilled in front-end technologies like React.js,Nextjs,  HTML, CSS, JavaScript and back-end technologies such as Node.js,Express.js and databases like  MongoDB,MySQL. Proficient in programming and passionate about creating efficient, user-friendly web applications. Constantly learning and adapting to new technologies to stay ahead in the ever-evolving tech landscape. </p>
+                    <div className='max-md:px-1'>
+                        <Tabs position="relative" variant="unstyled" marginTop={15} borderColor={"red"} overflow={'hidden'}>
+                            <TabList gap={17} >
+                                <Tab>Skills</Tab>
+                                <Tab>Experience</Tab>
+                                <Tab>Education</Tab>
+                            </TabList>
+                            <TabIndicator
+                                mt="-1.5px"
+                                height="2px"
+                                bg="#f97316"
+                                borderRadius="1px"
+                            />
 
-                        <TabPanels>
-                            <TabPanel>
-                                <Skill />
-                            </TabPanel>
-                            <TabPanel>
-                                <Experience />
-                            </TabPanel>
-                            <TabPanel>
-                                <Education />
-                            </TabPanel>
-                        </TabPanels>
-                    </Tabs>
+                            <TabPanels>
+                                <TabPanel>
+                                    <Skill />
+                                </TabPanel>
+                                <TabPanel>
+                                    <Experience />
+                                </TabPanel>
+                                <TabPanel>
+                                    <Education />
+                                </TabPanel>
+                            </TabPanels>
+                        </Tabs>
+                    </div>
                 </div>
             </div>
         </ChakraProvider>

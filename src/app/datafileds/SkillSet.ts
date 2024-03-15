@@ -7,7 +7,7 @@ export const skillSet: skillType = [
     {
         category: "Front-end Development",
         skilloption: [
-            "React", "Next", "TailwindCSS", "HTML", "CSS", "BOOTSTRAP"]
+            "React", "Next", "TailwindCSS","Typescript", "HTML", "CSS", "BOOTSTRAP"]
     },
     {
         category: "Back-end Development",
@@ -19,6 +19,7 @@ export const skillSet: skillType = [
     },
     {
         category: "Other",
-        skilloption: ["NextAuth", "RESTful APIs", "Agile methodologies", "UI/UX design principles"]
+        skilloption: ["NextAuth","React Hook Form ","Shadcn","Chakra UI" ,"RESTful APIs", "Agile methodologies", "UI/UX design principles"]
     },
+    
 ]

@@ -12,7 +12,7 @@ const Experience = () => {
                         <div className='mt-1 flex gap-1 text-white/70 flex-col flex-wrap leading-5 text-sm font-mono'>
                             {
                                 data.keypoint.map((point, index) => (
-                                    <span className='capitalise mt-1' key={index} >{index + 1}. {point}</span>
+                                    <span className='capitalise mt-1' key={index} ><span className='text-orange-400 '>{index + 1}.</span> {point}</span>
                                 ))
                             }
                         </div>

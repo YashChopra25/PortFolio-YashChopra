@@ -19,7 +19,7 @@ body {
 }
 
 *::-webkit-scrollbar-track {
-  background: rgb(217, 217, 224);
+  background: rgba(217, 217, 224, 0.582);
   border-radius: 5px;
 }
 
@@ -31,12 +31,24 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: #1c1b23;
-  border: 3px solid rgba(255, 0, 0, 0.548)
+  border: 3px solid rgba(255, 0, 0, 0.315)
 }
 
 .dd {
   filter: drop-shadow(50px 4px 6px black)
 }
+
 .dd2 {
   filter: drop-shadow(50px 4px 6px white)
+}
+
+::-moz-selection {
+  /* Code for Firefox */
+  color: red;
+  background: yellow;
+}
+
+::selection {
+  color: orange;
+  background: rgba(255, 255, 255, 0.267);
 }

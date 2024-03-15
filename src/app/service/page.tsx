@@ -2,7 +2,7 @@ import React from 'react'
 
 const Services = () => {
   return (
-    <div>Services</div>
+    <div className='text-white flex items-center justify-center'>Contact page is under development</div>
   )
 }
 
