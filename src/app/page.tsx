@@ -2,6 +2,11 @@
 import { Typewriter } from 'react-simple-typewriter'
 import DP from '@/../public/dp.png'
 import Image from 'next/image'
+import React from 'react'
+import { FaLinkedin } from "react-icons/fa6";
+import { RiTwitterXFill } from "react-icons/ri";
+import { SiLeetcode } from 'react-icons/si'
+import Link from "next/link"
 
 export default function Home() {
   return (
@@ -25,8 +30,22 @@ export default function Home() {
             />
           </span>
           <div className='max-md:mt-10  max-md:flex justify-evenly'>
-            <a className=' text-orange-700 hover:text-white border border-orange-700 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center me-2 mb-2 dark:border-orange-500 dark:text-orange-500 dark:hover:text-white dark:hover:bg-orange-500 dark:focus:ring-orange-800' href={process.env.RESUME_LINK} download={"YashChorpaResume.png"}>Resume</a>
-            <a href='/contact' className='text-orange-700 hover:text-white border border-orange-700 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center me-2 mb-2 dark:border-orange-500 dark:text-orange-500 dark:hover:text-white dark:hover:bg-orange-500 dark:focus:ring-orange-800'>Hire me</a>
+            <a className=' text-orange-500 hover:text-white border border-orange-500 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center me-2 mb-2 dark:border-orange-500 dark:text-orange-500 dark:hover:text-white dark:hover:bg-orange-500 dark:focus:ring-orange-800' href={process.env.RESUME_LINK} download={"YashChopraResume.pdf"}>Resume</a>
+            <Link href='/contact' className='text-orange-500 hover:text-white border border-orange-500 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center me-2 mb-2 dark:border-orange-500 dark:text-orange-500 dark:hover:text-white dark:hover:bg-orange-500 dark:focus:ring-orange-800'>Hire me</Link>
+          </div>
+          <div className="flex gap-4 max-md:px-5">
+            <Link href="https://www.linkedin.com/in/yashchopra25/" target='_linkedIn'>
+              <FaLinkedin size={30} color='blue' className='bg-white' />
+              <span className="sr-only">LinkedIn Profile</span>
+            </Link>
+            <Link href="https://twitter.com/YashChopra25" target='_Twitter'>
+              <RiTwitterXFill size={25} color='white' />
+              <span className="sr-only">X(twitter) Profile</span>
+            </Link>
+            <Link href="https://leetcode.com/YashChopra25/" target='_leetcode'>
+              <SiLeetcode size={25} color='#ffa116' />
+              <span className="sr-only">Leetcode Profile</span>
+            </Link>
           </div>
         </div>
         <div className="path mx-auto px-5 max-md:mt-5" >
