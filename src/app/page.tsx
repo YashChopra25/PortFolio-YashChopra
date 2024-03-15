@@ -3,7 +3,7 @@ import { Typewriter } from 'react-simple-typewriter'
 import DP from '@/../public/dp.png'
 import Image from 'next/image'
 import React from 'react'
-import { FaLinkedin } from "react-icons/fa6";
+import { FaGithub, FaLinkedin } from "react-icons/fa6";
 import { RiTwitterXFill } from "react-icons/ri";
 import { SiLeetcode } from 'react-icons/si'
 import Link from "next/link"
@@ -44,6 +44,10 @@ export default function Home() {
             </Link>
             <Link href="https://leetcode.com/YashChopra25/" target='_leetcode'>
               <SiLeetcode size={25} color='#ffa116' />
+              <span className="sr-only">Leetcode Profile</span>
+            </Link>
+            <Link href="https://github.com/YashChopra25/" target='_Github'>
+              <FaGithub size={30} color='white' />
               <span className="sr-only">Leetcode Profile</span>
             </Link>
           </div>
