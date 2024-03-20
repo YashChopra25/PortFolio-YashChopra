@@ -4,6 +4,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { useForm, SubmitHandler } from "react-hook-form"
 import Services from '../service/page';
 import Input from '../_components/Input';
+import axios from 'axios';
 
 interface IFormInput {
   name: string,
@@ -13,21 +14,32 @@ interface IFormInput {
 }
 
 const Contact = () => {
-  const { register, handleSubmit, formState } = useForm<IFormInput>()
-  const [NameError, SetNameError] = useState<string | undefined>();
-  const [EmailError, SetEmailError] = useState<string | undefined>();
-  const [MessageError, SetMessageError] = useState<string | undefined>();
-  const [Error, SetError] = useState({
-    name: "",
-    email: "",
-    message: ""
+  const { register, handleSubmit, formState: { errors }, reset, } = useForm<IFormInput>({
+    defaultValues: {
+      name: "", email: ""
+    }
   })
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    console.log(data)
-    console.log(formState)
+
+  const onSubmit: SubmitHandler<IFormInput> = async (Messagedata) => {
+    try {
+      toast.remove()
+      console.log(Messagedata)
+
+      const { data } = await axios.post("/api/sendmessage", Messagedata)
+      if (!data.success) {
+        toast.error("Something went wrong while sending the mail");
+        return
+      }
+      toast.success("Email send successfully", {
+        duration: 2000,
+        position: "top-center",
+
+      })
+      reset()
+    } catch (error) {
+      toast.error("Something went wrong while sending the mail")
+    }
   }
-
-
   return (
     <>
       <div className="mx-auto flex max-w-screen-md items-center justify-center mt-8 max-md:px-3 max-md:mb-10">
@@ -37,7 +49,7 @@ const Contact = () => {
             <form className='mb-10 flex flex-col gap-10 ' onSubmit={handleSubmit(onSubmit)}>
               <div className='flex gap-6 max-md:flex-col'>
                 <div className='flex flex-col gap-3'>
-                  <Input placeholder="Enter your Name" usedFor="name"{
+                  <Input placeholder="Enter your Name" usedFor="name" autoComplete="off" {
                     ...register("name", {
                       required: "Name is required",
                       validate: {
@@ -46,24 +58,33 @@ const Contact = () => {
                       }
                     })
                   } />
-                  <span className='text-red-400 text-xs capitalize ml-2'>{NameError}</span>
+                  {errors.name && (
+                    <span className='text-red-400 text-xs capitalize ml-2'>{errors.name.message}</span>
+                  )}
                 </div>
                 <div className='flex flex-col gap-3'>
-                  <Input typeOfInput='email' placeholder="Enter your email" usedFor="email" {...register("email", {
-                    required: true,
+                  <Input typeOfInput='email' placeholder="Enter your email" usedFor="email" autoComplete="off" {...register("email", {
+                    required: "Email is required",
                     validate: {
                       matchPatern: (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
-                        "Email address must be a valid address",
+                        "Email address is not valid",
                     }
                   })} />
-                  <span className='text-red-400 text-xs capitalize ml-2'>{EmailError}</span>
+                  {errors.email && (
+                    <span className='text-red-400 text-xs capitalize ml-2'> {errors.email.message}</span>
+                  )}
                 </div>
               </div>
-              <textarea id=":6cs7" cols={30} rows={10} className='bg-[#434275] px-5 py-2 rounded-md focus:outline-[#5250a5] outline-none border-none capitalize text-white' placeholder='Enter your Feedback' {...register("message", {
-                required: "Empty message cannot be send"
-              })}></textarea>
+              <div className='flex flex-col gap-3'>
+                <textarea id=":6cs7" cols={30} rows={10} className='bg-[#434275] px-5 py-2 rounded-md focus:outline-[#5250a5] outline-none border-none capitalize text-white' placeholder='Enter your Feedback' {...register("message", {
+                  required: "Empty message cannot be send"
+                })}></textarea>
+                {errors.message && (
+                  <span className='text-red-400 text-xs capitalize ml-2'>{errors.message.message}</span>
+                )}
+              </div>
               <div className='flex gap-5'>
-                <button type='reset' className='bg-[#434275] px-5 py-2 w-1/2 mx-auto rounded-md text-white/80'>Reset</button>
+                <button type='button' className='bg-[#434275] px-5 py-2 w-1/2 mx-auto rounded-md text-white/80' onClick={() => reset()}>Reset</button>
                 <button type='submit' className='bg-[#434275] px-5 py-2 w-1/2 mx-auto rounded-md text-white/80'>Submit</button>
               </div>
 
