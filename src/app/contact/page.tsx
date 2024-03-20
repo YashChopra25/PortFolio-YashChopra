@@ -14,9 +14,9 @@ interface IFormInput {
 
 const Contact = () => {
   const { register, handleSubmit, formState } = useForm<IFormInput>()
-  const [NameError, SetNameError] = useState<string | undefined>("");
-  const [EmailError, SetEmailError] = useState<string | undefined>("");
-  const [MessageError, SetMessageError] = useState<string | undefined>("");
+  const [NameError, SetNameError] = useState<string | undefined>();
+  const [EmailError, SetEmailError] = useState<string | undefined>();
+  const [MessageError, SetMessageError] = useState<string | undefined>();
   const [Error, SetError] = useState({
     name: "",
     email: "",
@@ -26,19 +26,7 @@ const Contact = () => {
     console.log(data)
     console.log(formState)
   }
-  if (Object.keys(formState.errors).length) {
-    const err = formState.errors
-    console.log(err)
-    if (err.name) {
-      SetNameError(err.name)
-    }
-    if (err.email) {
-      SetEmailError(err.email)
-    }
-    if (err.message) {
-      SetMessageError(err.message)
-    }
-  }
+
 
   return (
     <>
