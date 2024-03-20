@@ -20,7 +20,7 @@ const About = () => {
                     <h1 className='text-6xl font-bold font-sans max-md:text-center max-md:text-4xl max-md:px-3'>About Me</h1>
                     <p className='my-3 text-lg font-medium leading-6 tracking-wide font-sans text-white/35 capitalize max-md:px-3'>
                         Experienced full stack developer skilled in front-end technologies like React.js,Nextjs,  HTML, CSS, JavaScript and back-end technologies such as Node.js,Express.js and databases like  MongoDB,MySQL. Proficient in programming and passionate about creating efficient, user-friendly web applications. Constantly learning and adapting to new technologies to stay ahead in the ever-evolving tech landscape. </p>
-                    <div className='max-md:px-1'>
+                    <div className='max-md:px-3'>
                         <Tabs position="relative" variant="unstyled" marginTop={15} borderColor={"red"} overflow={'hidden'}>
                             <TabList gap={17} >
                                 <Tab>Skills</Tab>
