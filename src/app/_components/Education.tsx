@@ -1,5 +1,5 @@
 import React from 'react'
-import { EducationData } from '../datafileds/Education'
+import { EducationData } from '../_utilities/datafileds/Education'
 const Education = () => {
     return (
         <div>

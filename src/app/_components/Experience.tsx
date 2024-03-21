@@ -1,5 +1,5 @@
 import React from 'react'
-import { ExperienceData } from '../datafileds/Experience'
+import { ExperienceData } from '../_utilities/datafileds/Experience'
 
 const Experience = () => {
     return (

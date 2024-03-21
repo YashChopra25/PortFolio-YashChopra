@@ -1,5 +1,5 @@
 import React from 'react'
-import { skillSet } from '../datafileds/SkillSet'
+import { skillSet } from '../_utilities/datafileds/SkillSet'
 const Skill = () => {
     return (
         <div>

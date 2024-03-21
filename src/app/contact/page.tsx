@@ -1,10 +1,11 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useState, useTransition } from 'react'
 import toast, { Toaster } from 'react-hot-toast';
 import { useForm, SubmitHandler } from "react-hook-form"
 import Services from '../service/page';
 import Input from '../_components/Input';
 import axios from 'axios';
+import { BarLoader, BeatLoader, CircleLoader, ClipLoader, ClockLoader } from 'react-spinners';
 
 interface IFormInput {
   name: string,
@@ -19,23 +20,33 @@ const Contact = () => {
       name: "", email: ""
     }
   })
-
-  const onSubmit: SubmitHandler<IFormInput> = async (Messagedata) => {
+  const sendMail = async (Messagedata: IFormInput) => {
     try {
-      toast.remove()
-      console.log(Messagedata)
-
       const { data } = await axios.post("/api/sendmessage", Messagedata)
+      console.log(data)
       if (!data.success) {
         toast.error("Something went wrong while sending the mail");
         return
       }
+
       toast.success("Email send successfully", {
         duration: 2000,
         position: "top-center",
 
       })
       reset()
+    } catch (error) {
+      toast.error("Something went wrong while sending the mail")
+    }
+  }
+  const [isPending, startTransition] = useTransition();
+  const onSubmit: SubmitHandler<IFormInput> = async (Messagedata) => {
+    try {
+      toast.remove()
+      console.log(Messagedata)
+      startTransition(async () => {
+        await sendMail(Messagedata)
+      })
     } catch (error) {
       toast.error("Something went wrong while sending the mail")
     }
@@ -49,7 +60,7 @@ const Contact = () => {
             <form className='mb-10 flex flex-col gap-10  max-md:px-3' onSubmit={handleSubmit(onSubmit)}>
               <div className='flex gap-6 max-md:flex-col max-md:px-3'>
                 <div className='flex flex-col gap-3'>
-                  <Input placeholder="Enter your Name" usedFor="name" autoComplete="off" {
+                  <Input placeholder="Enter your Name" usedFor="name" classname="capitalize" autoComplete="off" {
                     ...register("name", {
                       required: "Name is required",
                       validate: {
@@ -76,7 +87,7 @@ const Contact = () => {
                 </div>
               </div>
               <div className='flex flex-col gap-3 max-md:px-3'>
-                <textarea id=":6cs7" cols={15} rows={10} className='bg-[#434275] px-5 py-2 rounded-md focus:outline-[#5250a5] outline-none border-none capitalize text-white' placeholder='Enter your Feedback' {...register("message", {
+                <textarea id=":6cs7" cols={15} rows={10} className='bg-[#434275] px-5 py-2 rounded-md focus:outline-[#5250a5] outline-none border-none  text-white' placeholder='Enter your Feedback' {...register("message", {
                   required: "Empty message cannot be send"
                 })}></textarea>
                 {errors.message && (
@@ -85,9 +96,11 @@ const Contact = () => {
               </div>
               <div className='flex gap-5 max-md:px-3'>
                 <button type='button' className='bg-[#434275] px-5 py-2 w-1/2 mx-auto rounded-md text-white/80' onClick={() => reset()}>Reset</button>
-                <button type='submit' className='bg-[#434275] px-5 py-2 w-1/2 mx-auto rounded-md text-white/80'>Submit</button>
+                <button type='submit' className='bg-[#434275] px-5 py-2 w-1/2 mx-auto rounded-md text-white/80'>{
+                  isPending ? <ClipLoader size={25} color='#f97316' /> : "Submit"
+                }
+                </button>
               </div>
-
             </form>
           </div>
         </div>
