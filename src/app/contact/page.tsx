@@ -1,11 +1,10 @@
 "use client"
-import React, { useState, useTransition } from 'react'
+import React, { useTransition } from 'react'
 import toast, { Toaster } from 'react-hot-toast';
 import { useForm, SubmitHandler } from "react-hook-form"
-import Services from '../service/page';
 import Input from '../_components/Input';
 import axios from 'axios';
-import { BarLoader, BeatLoader, CircleLoader, ClipLoader, ClockLoader } from 'react-spinners';
+import { ClipLoader } from 'react-spinners';
 
 interface IFormInput {
   name: string,
@@ -23,7 +22,6 @@ const Contact = () => {
   const sendMail = async (Messagedata: IFormInput) => {
     try {
       const { data } = await axios.post("/api/sendmessage", Messagedata)
-      console.log(data)
       if (!data.success) {
         toast.error("Something went wrong while sending the mail");
         return
@@ -43,7 +41,6 @@ const Contact = () => {
   const onSubmit: SubmitHandler<IFormInput> = async (Messagedata) => {
     try {
       toast.remove()
-      console.log(Messagedata)
       startTransition(async () => {
         await sendMail(Messagedata)
       })
