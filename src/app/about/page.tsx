@@ -17,9 +17,11 @@ const About = () => {
                     <Image src={DP} alt="yash chopra" className='dd' />
                 </div>
                 <div className='w-2/4 max-md:w-full '>
-                    <h1 className='text-6xl font-bold font-sans max-md:text-center max-md:text-4xl max-md:px-3'>About Me</h1>
+                    <h1 className='text-4xl font-bold font-sans max-md:text-center max-md:text-4xl max-md:px-3'>About Me</h1>
                     <p className='my-3 text-lg font-medium leading-6 tracking-wide font-sans text-white/35 capitalize max-md:px-3'>
-                        Experienced full stack developer skilled in front-end technologies like React.js,Nextjs,  HTML, CSS, JavaScript and back-end technologies such as Node.js,Express.js and databases like  MongoDB,MySQL. Proficient in programming and passionate about creating efficient, user-friendly web applications. Constantly learning and adapting to new technologies to stay ahead in the ever-evolving tech landscape. </p>
+                Hello! I'm Yash Chopra, an aspiring website developer with a passion for crafting captivating digital experiences. While I'm new to the field, my enthusiasm and dedication drive me to create user-friendly websites that blend stunning design with seamless functionality. I thrive on collaborating closely with clients to bring their visions to life, whether it's establishing an online presence, launching an e-commerce platform, or revamping existing sites. Despite my limited professional experience, I'm committed to staying updated on the latest trends and technologies in web development. I invite you to explore my portfolio to see examples of my work. If you're looking for a collaborative partner to help bring your digital ideas to fruition, I'd be thrilled to work with you. Let's create something remarkable together!
+                    
+                    </p>
                     <div className='max-md:px-3'>
                         <Tabs position="relative" variant="unstyled" marginTop={15} borderColor={"red"} overflow={'hidden'}>
                             <TabList gap={17} >
