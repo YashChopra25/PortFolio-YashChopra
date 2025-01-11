@@ -1,6 +1,8 @@
 import Youtube_Project from "@/../public/youtube_project.png"
 import Firebase_Project from "@/../public/firebase_project.png"
 import Blog_Project from "@/../public/blog_posting.png"
+import Dragging from "@/../public/Dragging.png"
+import Yatify_Project from "@/../public/Yatify_Project.png"
 import PortFolio_project from "@/../public/PortFolio_project.png"
 import { StaticImageData } from "next/image";
 interface TypeProject {
@@ -14,6 +16,30 @@ interface TypeProject {
     description: string;
 }
 export const Total_Project: TypeProject[] = [
+    {
+        id: "45678sdhj",
+        Imgsrc: Yatify_Project,
+        Live_Project_url: "#",
+        Github_Project_url: "https://github.com/YashChopra25/yatify",
+        target: "Responsive layout, Channel page, Search for videos and channels, Get videos of different category.",
+        Title: "Yatify-Integrated Chat App",
+        Techniogy_used: [
+            "React,", "Express,", "MongoDB,", "socket,", "kafka,and", "RabbitMQ","              This is yet to deployed"
+        ],
+        description: "Yatify is a real-time collaboration app built with the MERN stack (MongoDB, Express, React, Node.js), leveraging Socket.IO for instant communication and updates. It integrates Kafka and RabbitMQ for efficient message brokering and event-driven processing, ensuring seamless asynchronous workflows. With Docker, Yatify enables containerized deployment for scalable and consistent environments across development and production. The responsive React frontend delivers an engaging user experience, while the Node.js backend ensures robust performance and scalability. Ideal for team collaboration and event tracking, Yatify combines real-time functionality with high availability, making it a reliable solution for modern communication and enterprise-grade scalability needs."
+    },
+    {
+        id: "yahkjds",
+        Imgsrc: Dragging,
+        Live_Project_url: "https://todos-credential.vercel.app/",
+        Github_Project_url: "https://github.com/YashChopra25/TodosCredential",
+        target: "Responsive layout, Channel page, Search for videos and channels, Get videos of different category.",
+        Title: "Dragging",
+        Techniogy_used: [
+            "Nextjs,", "Express,", "React-Hook-Form", "react-beautiful-dnd", "TailwindCSS,", "JS"
+        ],
+        description: "This project utilizes a modern tech stack to build scalable, interactive web applications. It includes Radix UI components for accessible and customizable design elements like Dialog, Popover, and Select. State management is streamlined with Redux Toolkit, while drag-and-drop functionality is powered by `react-beautiful-dnd`. Styling is enhanced with Tailwind utilities, `clsx`, and animation plugins. Libraries like `axios` handle API calls, `jsonwebtoken` manages authentication, and `date-fns` simplifies date operations. Built with React, Next.js, and supporting tools, this setup ensures a responsive, efficient, and developer-friendly environment for crafting dynamic user experiences."
+    },
     {
         id: "1",
         Imgsrc: Youtube_Project,
