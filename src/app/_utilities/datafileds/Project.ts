@@ -39,9 +39,7 @@ export const Total_Project: TypeProject[] = [
         Techniogy_used: [
             "React,", "Express,", "PRISMA,","Typescript"
         ],
-        description: "Batify is an innovative and user-friendly application designed to make sharing URLs more convenient and efficient. With the growing need for short, shareable links, Batify provides a seamless solution for users to shorten long URLs, making them more manageable and user-friendly. The application also incorporates a powerful QR code generation feature, allowing users to create scannable codes directly from the shortened URLs, making it even easier to share links via physical or digital means.
-
-Built using React for an interactive and responsive frontend experience, Express as the backend framework for robust API handling, Prisma as the ORM for efficient database management, and TypeScript to enhance type safety and code clarity, Batify provides a modern, scalable solution for URL management."
+        description: "Batify is an innovative and user-friendly application designed to make sharing URLs more convenient and efficient. With the growing need for short, shareable links, Batify provides a seamless solution for users to shorten long URLs, making them more manageable and user-friendly. The application also incorporates a powerful QR code generation feature, allowing users to create scannable codes directly from the shortened URLs, making it even easier to share links via physical or digital means. Built using React for an interactive and responsive frontend experience, Express as the backend framework for robust API handling, Prisma as the ORM for efficient database management, and TypeScript to enhance type safety and code clarity, Batify provides a modern, scalable solution for URL management."
     },
     {
         id: "yahkjds",
