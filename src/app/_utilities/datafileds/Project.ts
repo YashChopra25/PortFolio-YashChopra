@@ -3,6 +3,7 @@ import Firebase_Project from "@/../public/firebase_project.png"
 import Blog_Project from "@/../public/blog_posting.png"
 import Dragging from "@/../public/Dragging.png"
 import Yatify_Project from "@/../public/Yatify_Project.png"
+import Batify_Project from "@/../public/Batify_Project.png"
 import PortFolio_project from "@/../public/PortFolio_project.png"
 import { StaticImageData } from "next/image";
 interface TypeProject {
@@ -24,9 +25,23 @@ export const Total_Project: TypeProject[] = [
         target: "Responsive layout, Channel page, Search for videos and channels, Get videos of different category.",
         Title: "Yatify-Integrated Chat App",
         Techniogy_used: [
-            "React,", "Express,", "MongoDB,", "socket,", "kafka,and", "RabbitMQ","              This is yet to deployed"
+            "React,", "Express,", "MongoDB,", "socket,", "kafka,and", "RabbitMQ",
         ],
         description: "Yatify is a real-time collaboration app built with the MERN stack (MongoDB, Express, React, Node.js), leveraging Socket.IO for instant communication and updates. It integrates Kafka and RabbitMQ for efficient message brokering and event-driven processing, ensuring seamless asynchronous workflows. With Docker, Yatify enables containerized deployment for scalable and consistent environments across development and production. The responsive React frontend delivers an engaging user experience, while the Node.js backend ensures robust performance and scalability. Ideal for team collaboration and event tracking, Yatify combines real-time functionality with high availability, making it a reliable solution for modern communication and enterprise-grade scalability needs."
+    },
+    {
+        id: "45678sdhj",
+        Imgsrc: Batify_Project,
+        Live_Project_url: "#",
+        Github_Project_url: "https://github.com/YashChopra25/Batify",
+        target: "Responsive layout, Channel page, Search for videos and channels, Get videos of different category.",
+        Title: "Batify -An shorter of URL and QR code generator",
+        Techniogy_used: [
+            "React,", "Express,", "PRISMA,","Typescript"
+        ],
+        description: "Batify is an innovative and user-friendly application designed to make sharing URLs more convenient and efficient. With the growing need for short, shareable links, Batify provides a seamless solution for users to shorten long URLs, making them more manageable and user-friendly. The application also incorporates a powerful QR code generation feature, allowing users to create scannable codes directly from the shortened URLs, making it even easier to share links via physical or digital means.
+
+Built using React for an interactive and responsive frontend experience, Express as the backend framework for robust API handling, Prisma as the ORM for efficient database management, and TypeScript to enhance type safety and code clarity, Batify provides a modern, scalable solution for URL management."
     },
     {
         id: "yahkjds",
