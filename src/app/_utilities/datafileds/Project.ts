@@ -32,14 +32,14 @@ export const Total_Project: TypeProject[] = [
     {
         id: "45678sdhj",
         Imgsrc: Batify_Project,
-        Live_Project_url: "#",
-        Github_Project_url: "https://github.com/YashChopra25/Batify",
+        Live_Project_url: "https://yatirly.yashchopra.tech/",
+        Github_Project_url: "https://github.com/YashChopra25/Yatirly",
         target: "Responsive layout, Channel page, Search for videos and channels, Get videos of different category.",
-        Title: "Batify -An shorter of URL and QR code generator",
+        Title: "Yatirly -An shorter of URL and QR code generator",
         Techniogy_used: [
             "React,", "Express,", "PRISMA,","Typescript"
         ],
-        description: "Batify is an innovative and user-friendly application designed to make sharing URLs more convenient and efficient. With the growing need for short, shareable links, Batify provides a seamless solution for users to shorten long URLs, making them more manageable and user-friendly. The application also incorporates a powerful QR code generation feature, allowing users to create scannable codes directly from the shortened URLs, making it even easier to share links via physical or digital means. Built using React for an interactive and responsive frontend experience, Express as the backend framework for robust API handling, Prisma as the ORM for efficient database management, and TypeScript to enhance type safety and code clarity, Batify provides a modern, scalable solution for URL management."
+        description: "Yatirly is an innovative and user-friendly application designed to make sharing URLs more convenient and efficient. With the growing need for short, shareable links, Batify provides a seamless solution for users to shorten long URLs, making them more manageable and user-friendly. The application also incorporates a powerful QR code generation feature, allowing users to create scannable codes directly from the shortened URLs, making it even easier to share links via physical or digital means. Built using React for an interactive and responsive frontend experience, Express as the backend framework for robust API handling, Prisma as the ORM for efficient database management, and TypeScript to enhance type safety and code clarity, Batify provides a modern, scalable solution for URL management."
     },
     {
         id: "yahkjds",
