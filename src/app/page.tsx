@@ -1,62 +1,112 @@
 "use client"
-import { Typewriter } from 'react-simple-typewriter'
-import DP from '@/../public/dp.png'
-import Image from 'next/image'
+
 import React from 'react'
-import { FaGithub, FaLinkedin } from "react-icons/fa6";
-import { RiTwitterXFill } from "react-icons/ri";
-import { SiLeetcode } from 'react-icons/si'
+import { Typewriter } from 'react-simple-typewriter'
 import Link from "next/link"
+import { motion } from 'framer-motion'
+import { FaGithub, FaLinkedin } from "react-icons/fa6"
+import { RiTwitterXFill } from "react-icons/ri"
+import { SiLeetcode } from 'react-icons/si'
+import { ArrowRight, Download } from 'lucide-react'
 
 export default function Home() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  }
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+  }
+
   return (
-    <>
-      <div className="max-h-screen mt-10 grid grid-cols-2 grid-rows-1 max-md:grid-cols-1 max-md:min-h-fit max-md:grid-rows-2" >
-        <div className="h-3/4 ml-12 px-6 flex flex-col mt-10 justify-center gap-10 max-md:h-full max-md:m-0" data-aos="fade-right">
-          <h1 className="text-white text-8xl font-sans font-bold max-md:text-6xl">
-            Hi, I&apos;m
+    <main className="relative min-h-[calc(100vh-80px)] overflow-hidden flex items-center justify-center py-20 px-4">
+      {/* Background Decorative Elements */}
+      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/20 rounded-full blur-[120px] -z-10" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-500/10 rounded-full blur-[120px] -z-10" />
+
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="max-w-4xl w-full text-center space-y-12"
+      >
+        <motion.div variants={itemVariants} className="space-y-4">
+          <h2 className="text-xl md:text-2xl font-medium text-primary tracking-wide">
+            Hi, I&apos;m Yash Chopra
+          </h2>
+          <h1 className="text-5xl md:text-8xl font-bold tracking-tight">
+            I build <span className="text-gradient">exceptional</span> digital experiences.
           </h1>
-          <span className='mx-auto text-6xl text--500 font-bold h-1/4 text-white max-md:text-5xl'>
-            <Typewriter
-              cursorBlinking={true}
-              words={['Frontend Devloper', 'Backend Developer', 'UI Developer', "Fast Learner"]}
-              cursorColor='white'
-              loop={false}
-              cursor
-              cursorStyle='|'
-              typeSpeed={50}
-              deleteSpeed={50}
+        </motion.div>
 
-            />
-          </span>
-          <div className='max-md:mt-10  max-md:flex justify-evenly'>
-            <a className=' text-orange-500 hover:text-white border border-orange-500 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center me-2 mb-2 dark:border-orange-500 dark:text-orange-500 dark:hover:text-white dark:hover:bg-orange-500 dark:focus:ring-orange-800' href={process.env.RESUME_LINK} download={"YashChopraResume.pdf"}>Resume</a>
-            <Link href='/contact' className='text-orange-500 hover:text-white border border-orange-500 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center me-2 mb-2 dark:border-orange-500 dark:text-orange-500 dark:hover:text-white dark:hover:bg-orange-500 dark:focus:ring-orange-800'>Hire me</Link>
-          </div>
-          <div className="flex gap-4 max-md:px-5">
-            <Link href="https://www.linkedin.com/in/yashchopra25/" target='_linkedIn'>
-              <FaLinkedin size={30} color='blue' className='bg-white' />
-              <span className="sr-only">LinkedIn Profile</span>
-            </Link>
-            <Link href="https://twitter.com/YashChopra25" target='_Twitter'>
-              <RiTwitterXFill size={25} color='white' />
-              <span className="sr-only">X(twitter) Profile</span>
-            </Link>
-            <Link href="https://leetcode.com/YashChopra25/" target='_leetcode'>
-              <SiLeetcode size={25} color='#ffa116' />
-              <span className="sr-only">Leetcode Profile</span>
-            </Link>
-            <Link href="https://github.com/YashChopra25/" target='_Github'>
-              <FaGithub size={30} color='white' />
-              <span className="sr-only">Leetcode Profile</span>
-            </Link>
-          </div>
-        </div>
-        <div className="path mx-auto px-5 max-md:mt-5" >
-          <Image src={DP} alt="yash chopra" className='dd2' />
-        </div>
+        <motion.div variants={itemVariants} className="h-16 text-2xl md:text-4xl font-semibold text-muted-foreground">
+          <Typewriter
+            words={['Frontend Developer', 'Backend Developer', 'Full Stack Engineer', 'UI/UX Enthusiast']}
+            loop={0}
+            cursor
+            cursorStyle='_'
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={2000}
+          />
+        </motion.div>
 
-      </div>
-    </>
+        <motion.p variants={itemVariants} className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground leading-relaxed">
+          I specialize in crafting high-performance, accessible, and visually stunning web applications
+          that solve real-world problems.
+        </motion.p>
+
+        <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center gap-6">
+          <Link
+            href="/contact"
+            className="group relative px-8 py-4 bg-primary text-primary-foreground rounded-full font-semibold overflow-hidden transition-all hover:scale-105 active:scale-95 flex items-center gap-2"
+          >
+            Hire me
+            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+          </Link>
+          <a
+            href={process.env.RESUME_LINK || "#"}
+            className="px-8 py-4 border border-border hover:bg-muted/50 rounded-full font-semibold transition-all hover:scale-105 active:scale-95 flex items-center gap-2"
+            download="YashChopraResume.pdf"
+          >
+            Resume
+            <Download className="w-5 h-5" />
+          </a>
+        </motion.div>
+
+        <motion.div variants={itemVariants} className="flex justify-center gap-8 pt-8 border-t border-border/50">
+          {[
+            { icon: FaLinkedin, href: "https://www.linkedin.com/in/yashchopra25/", color: "hover:text-[#0077b5]", label: "LinkedIn" },
+            { icon: FaGithub, href: "https://github.com/YashChopra25/", color: "hover:text-foreground", label: "GitHub" },
+            { icon: RiTwitterXFill, href: "https://twitter.com/YashChopra25", color: "hover:text-foreground", label: "X" },
+            { icon: SiLeetcode, href: "https://leetcode.com/YashChopra25/", color: "hover:text-[#ffa116]", label: "LeetCode" }
+          ].map((social, index) => (
+            <Link
+              key={index}
+              href={social.href}
+              target="_blank"
+              className={`text-muted-foreground transition-all duration-300 hover:-translate-y-1 ${social.color}`}
+            >
+              <social.icon size={28} />
+              <span className="sr-only">{social.label} focus:outline-none Profile</span>
+            </Link>
+          ))}
+        </motion.div>
+      </motion.div>
+    </main>
   )
 }

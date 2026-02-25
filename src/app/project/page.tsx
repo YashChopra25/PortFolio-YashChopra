@@ -1,58 +1,92 @@
-import { Metadata } from 'next';
-import Image from 'next/image';
+"use client"
+
 import React from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { motion } from 'framer-motion'
+import { FaGithub } from 'react-icons/fa6'
+import { ExternalLink } from 'lucide-react'
+import { Total_Project } from '../_utilities/datafileds/Project'
 
-import Link from 'next/link';
-import { FaGithub } from 'react-icons/fa6';
-import { LuExternalLink } from 'react-icons/lu';
-import { Total_Project } from '../_utilities/datafileds/Project';
-
-export const metadata: Metadata = {
-    title: 'Yash Chopra-Project',
-};
-const Project = () => {
+const ProjectsPage = () => {
     return (
-        <div className='px-5 py-2 text-white grid grid-cols-2 grid-rows-1 gap-10 max-md:grid-cols-1 mb-10'>
+        <main className="min-h-screen py-20 px-6 max-w-7xl mx-auto space-y-16">
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-center space-y-4"
+            >
+                <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
+                    My <span className="text-gradient">Projects</span>
+                </h1>
+                <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                    A selection of my recent works, ranging from frontend experiments to full-stack applications.
+                </p>
+            </motion.div>
 
-            {
-                Total_Project.map((Project) => (
-                    <div className="px-3 py-3 border-2 border-white/50 bg-white/25 rounded-md flex flex-col gap-4" key={Project.id}>
-                        <Link href={Project.Live_Project_url} target={Project.target}>
-                            <Image src={Project.Imgsrc} alt="Youtube_project" className='border-2 border-orange-600 rounded-lg' />
-                        </Link>
-                        <div className='flex flex-col gap-2'>
-                            <div className='flex justify-between items-center'>
-                                <span className='text-orange-400 font-bold tracking-wide text-2xl capitalize'>{Project.Title}</span>
-                                <div className='flex gap-5 items-center justify-center '>
-                                    <Link href={Project.Github_Project_url} target={Project.target}>
-                                        <FaGithub size={30} className='hover:cursor-pointer' />
-                                    </Link>
-                                    <Link href={Project.Live_Project_url} target={Project.target}>
-                                        <LuExternalLink size={30} className='hover:cursor-pointer' />
-                                    </Link>
-                                </div>
-                            </div>
-                            <p className='text-xs flex items-center justify-normal gap-1 flex-wrap'>
-                                {
-                                    Project.Techniogy_used.map((Techs, index) => (
-                                        <span className='text-orange-400 font-semibold capitalize tracking-wider' key={index}>{Techs}</span>
-
-                                    ))
-                                }
-                            </p>
-                            <div>
-                                <p className='text-sm font-semibold text-justify'>{
-                                    Project.description
-                                }</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {Total_Project.map((project, index) => (
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                        key={project.id}
+                        className="group relative flex flex-col glass rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-300"
+                    >
+                        {/* Project Image */}
+                        <div className="relative aspect-video overflow-hidden">
+                            <Image
+                                src={project.Imgsrc}
+                                alt={project.Title}
+                                fill
+                                className="object-cover transition-transform duration-500 group-hover:scale-110"
+                            />
+                            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+                                <Link
+                                    href={project.Github_Project_url}
+                                    target="_blank"
+                                    className="p-3 bg-white/20 backdrop-blur-md rounded-full hover:bg-white/40 transition-colors"
+                                >
+                                    <FaGithub size={24} className="text-white" />
+                                </Link>
+                                <Link
+                                    href={project.Live_Project_url}
+                                    target="_blank"
+                                    className="p-3 bg-white/20 backdrop-blur-md rounded-full hover:bg-white/40 transition-colors"
+                                >
+                                    <ExternalLink size={24} className="text-white" />
+                                </Link>
                             </div>
                         </div>
 
-                    </div>
-                ))
-            }
+                        {/* Project Info */}
+                        <div className="p-6 flex-1 flex flex-col gap-4">
+                            <div className="flex justify-between items-start">
+                                <h3 className="text-xl font-bold group-hover:text-primary transition-colors">
+                                    {project.Title}
+                                </h3>
+                            </div>
 
-        </div >
+                            <div className="flex flex-wrap gap-2 mt-auto">
+                                {project.Techniogy_used.map((tech, i) => (
+                                    <span
+                                        key={i}
+                                        className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider bg-primary/10 text-primary rounded-md"
+                                    >
+                                        {tech}
+                                    </span>
+                                ))}
+                            </div>
+
+                            <p className="text-muted-foreground text-sm line-clamp-3">
+                                {project.description}
+                            </p>
+                        </div>
+                    </motion.div>
+                ))}
+            </div>
+        </main>
     )
 }
 
-export default Project
+export default ProjectsPage
