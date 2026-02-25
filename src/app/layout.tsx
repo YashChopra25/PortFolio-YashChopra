@@ -25,6 +25,10 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Yash Chopra" }],
   creator: "Yash Chopra",
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -69,7 +73,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="16x16" />
       </head>
       <body className={`${inter.className} transition-colors duration-300`}>
         <ThemeProvider
