@@ -10,7 +10,7 @@ import { Total_Project } from '../_utilities/datafileds/Project'
 
 const ProjectsPage = () => {
     return (
-        <main className="min-h-screen py-20 px-6 max-w-7xl mx-auto space-y-16">
+        <main className="min-h-screen py-20 px-6 max-w-8xl mx-auto space-y-16">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -62,7 +62,7 @@ const ProjectsPage = () => {
                         {/* Project Info */}
                         <div className="p-6 flex-1 flex flex-col gap-4">
                             <div className="flex justify-between items-start">
-                                <h3 className="text-xl font-bold group-hover:text-primary transition-colors">
+                                <h3 className="text-xl font-bold group-hover:text-primary transition-colors" title={project.Title}>
                                     {project.Title}
                                 </h3>
                             </div>
@@ -78,7 +78,7 @@ const ProjectsPage = () => {
                                 ))}
                             </div>
 
-                            <p className="text-muted-foreground text-sm line-clamp-3">
+                            <p className="text-muted-foreground text-sm line-clamp-3" title={project.description} aria-description={project.description}>
                                 {project.description}
                             </p>
                         </div>
