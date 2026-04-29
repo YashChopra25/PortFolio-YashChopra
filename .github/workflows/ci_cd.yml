@@ -21,7 +21,7 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Pull latest code
-        run: git pull origin main
+        run: git clone https://github.com/YashChopra25/PortFolio-YashChopra.git
       - name: Create .env file
         run: |
           echo "RESUME_DRIVE_LINK=${{secrets.RESUME_DRIVE_LINK}}" >> .env && echo "EMAIL_USER=${{secrets.EMAIL_USER}}" >> .env && echo "EMAIL_PASSWORD=${{secrets.EMAIL_PASSWORD}}" >> .env && echo "EMAIL_USER_SEND_TO=${{secrets.EMAIL_USER_SEND_TO}}" >> .env
