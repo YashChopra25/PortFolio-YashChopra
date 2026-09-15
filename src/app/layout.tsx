@@ -1,27 +1,38 @@
-import type { Metadata } from "next";
-import { Analytics } from '@vercel/analytics/react';
-import { Inter } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/react";
+import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./providers";
+import Background from "@/app/_components/Background";
 import Navbar from "@/app/_components/Navbar";
+import Footer from "@/app/_components/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const sans = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
+const display = Space_Grotesk({ subsets: ["latin"], variable: "--font-display", display: "swap" });
+const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", display: "swap" });
+
+const siteUrl = "https://yashchopraportfolio.vercel.app";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Yash Chopra | Full Stack & Web3 Developer",
-    template: "%s | Yash Chopra"
+    template: "%s | Yash Chopra",
   },
-  description: "Advanced Portfolio of Yash Chopra - Full Stack & Web3 Developer specializing in React, Next.js, and Blockchain technologies.",
+  description:
+    "Portfolio of Yash Chopra — Full Stack & Web3 engineer building on Solana, Ethereum and Robinhood Chain with Next.js, Rust and Solidity.",
   keywords: [
     "Yash Chopra",
     "Portfolio",
     "Full Stack Developer",
     "Web3 Developer",
     "Blockchain Engineer",
+    "Solana Developer",
+    "Solidity Developer",
+    "Robinhood Chain",
     "React Developer",
     "Next.js Portfolio",
-    "Software Engineer"
+    "Software Engineer",
   ],
   authors: [{ name: "Yash Chopra" }],
   creator: "Yash Chopra",
@@ -32,10 +43,10 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://yashchopra.vercel.app", // Fallback URL
+    url: siteUrl,
     siteName: "Yash Chopra Portfolio",
     title: "Yash Chopra | Full Stack & Web3 Developer",
-    description: "Building exceptional digital experiences with a focus on Web3, Performance, and Design.",
+    description: "Engineering the on-chain future — protocols, full-stack products and interfaces that feel alive.",
     images: [
       {
         url: "/og-image.png",
@@ -48,7 +59,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Yash Chopra | Full Stack & Web3 Developer",
-    description: "Full Stack & Web3 Developer specializing in high-performance web applications.",
+    description: "Full Stack & Web3 engineer building on Solana, Ethereum and Robinhood Chain.",
     creator: "@YashChopra25",
     images: ["/og-image.png"],
   },
@@ -58,11 +69,18 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f4f6fb" },
+    { media: "(prefers-color-scheme: dark)", color: "#05060f" },
+  ],
 };
 
 export default function RootLayout({
@@ -71,18 +89,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-      </head>
-      <body className={`${inter.className} transition-colors duration-300`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
+    <html lang="en" suppressHydrationWarning className={`${sans.variable} ${display.variable} ${mono.variable}`}>
+      <body>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+          <Background />
           <Navbar />
-          {children}
+          <div className="relative flex min-h-screen flex-col">
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
           <Analytics />
         </ThemeProvider>
       </body>

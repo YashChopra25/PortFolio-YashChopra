@@ -1,29 +1,28 @@
-export type EducationType = {
-  from: string;
-  description: string[];
-}[];
+export type EducationItem = {
+  degree: string;
+  institution: string;
+  year: string;
+};
 
-export const EducationData: EducationType = [
+export const EducationData: EducationItem[] = [
   {
-    from: "MASTER OF COMPUTER APPLICATIONS (MCA)",
-    description: [
-      "Indira Gandhi National Open University (IGNOU),Delhi",
-      "July,2026",
-    ],
+    degree: "Master of Computer Applications (MCA)",
+    institution: "Indira Gandhi National Open University (IGNOU), Delhi",
+    year: "2026",
   },
   {
-    from: "BACHELOR OF COMPUTER APPLICATIONS (BCA)",
-    description: [
-      "Indira Gandhi National Open University (IGNOU),Delhi",
-      "July,2024",
-    ],
+    degree: "Bachelor of Computer Applications (BCA)",
+    institution: "Indira Gandhi National Open University (IGNOU), Delhi",
+    year: "2024",
   },
   {
-    from: "SENIOR SECONDARY EDUCATION",
-    description: ["Diwakar Model School, Sahibabad, U.P", "2020,CBSE"],
+    degree: "Senior Secondary Education (CBSE)",
+    institution: "Diwakar Model School, Sahibabad, U.P.",
+    year: "2020",
   },
   {
-    from: "SECONDARY EDUCATION",
-    description: ["Diwakar Model School, Sahibabad, U.P", "2018,CBSE"],
+    degree: "Secondary Education (CBSE)",
+    institution: "Diwakar Model School, Sahibabad, U.P.",
+    year: "2018",
   },
 ];

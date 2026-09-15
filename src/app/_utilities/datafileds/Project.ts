@@ -1,135 +1,166 @@
-import Youtube_Project from "@/../public/youtube_project.png";
-import Firebase_Project from "@/../public/firebase_project.png";
-import Blog_Project from "@/../public/blog_posting.png";
-import Dragging from "@/../public/Dragging.png";
-import Yatify_Project from "@/../public/Yatify_Project.png";
-import Batify_Project from "@/../public/Batify_Project.png";
-import PortFolio_project from "@/../public/PortFolio_project.png";
-import ChainView_project from "@/../public/Chain_view.jpeg";
-import { StaticImageData } from "next/image";
-interface TypeProject {
-  id: string;
-  Imgsrc: StaticImageData;
-  Live_Project_url: string;
-  Github_Project_url: string;
-  target: string;
-  Title: string;
-  Techniogy_used: string[];
+import type { StaticImageData } from "next/image";
+import HoodPadImage from "@/../public/hoodpad_project.jpg";
+import VaultWillImage from "@/../public/inheritance_protocol_project.jpg";
+import ChainViewImage from "@/../public/Chain_view.jpeg";
+import YatirlyImage from "@/../public/Batify_Project.png";
+import YatifyImage from "@/../public/Yatify_Project.png";
+import DraggingImage from "@/../public/Dragging.png";
+import PortfolioImage from "@/../public/PortFolio_project.png";
+import YoutubeImage from "@/../public/youtube_project.png";
+import FirebaseImage from "@/../public/firebase_project.png";
+import BlogImage from "@/../public/blog_posting.png";
+
+export type ProjectCategory = "Web3" | "Full Stack";
+
+export type Project = {
+  slug: string;
+  title: string;
+  tagline: string;
   description: string;
-}
-export const Total_Project: TypeProject[] = [
+  highlights?: string[];
+  image: StaticImageData;
+  liveUrl?: string;
+  githubUrl: string;
+  tech: string[];
+  category: ProjectCategory;
+  featured?: boolean;
+  badge?: string;
+};
+
+export const projects: Project[] = [
   {
-    id: "3456sd900s",
-    Imgsrc: ChainView_project,
-    Live_Project_url: "https://chain-view-web3.vercel.app/",
-    Github_Project_url: "https://github.com/YashChopra25/ChainView-Web3",
-    target: "_ChainView-Web3",
-    Title: "ChainView-Web3",
-    Techniogy_used: [
-      "Web3.js",
-      "Metaplex",
-      "Solana",
-      "ANZA-Wallet",
-      "Nextjs",
-      "TailwindCSS",
+    slug: "hoodpad",
+    title: "HoodPad",
+    tagline: "Non-custodial memecoin launchpad on Robinhood Chain",
+    description:
+      "Launch an ERC-20 in one transaction, trade it on a bonding curve from block one, and graduate it into a Uniswap V2 pool with burned LP. Built for Robinhood Chain (Arbitrum Orbit) with no backend or indexer — the contracts are the database.",
+    highlights: [
+      "One-transaction ERC-20 launches with on-chain metadata, images and links",
+      "Constant-product bonding curve with virtual ETH reserves that graduates to Uniswap V2",
+      "Optional anti-bot, anti-whale, transfer-tax and ownership-renounce protections",
+      "Foundry + OpenZeppelin contracts with 58+ tests, batched JSON-RPC reads and EIP-6963 wallet discovery",
     ],
-    description:
-      "ChainView is a cutting-edge Web3 analytics platform built with Next.js and Tailwind CSS, designed to provide users with real-time insights into blockchain data. It features a responsive, modern interface that allows users to track transactions, monitor wallet activities, and analyze network trends effortlessly. With its intuitive design and powerful data visualization capabilities, ChainView empowers users to make informed decisions in the fast-paced world of decentralized finance.",
+    image: HoodPadImage,
+    liveUrl: "https://hoodpad-a-robinhood-meme-launchpad.vercel.app/",
+    githubUrl: "https://github.com/YashChopra25/HoodPad---A-Robinhood-meme-launchpad",
+    tech: ["Solidity", "Foundry", "OpenZeppelin", "Uniswap V2", "Next.js", "TypeScript", "EIP-6963"],
+    category: "Web3",
+    featured: true,
+    badge: "New",
   },
   {
-    id: "4",
-    Imgsrc: PortFolio_project,
-    Live_Project_url: "https://yashchopraportfolio.vercel.app/",
-    Github_Project_url: "https://github.com/YashChopra25/PortFolio-YashChopra",
-    target: "_portfolio_yash",
-    Title: "Yash Chopra-Portfolio",
-    Techniogy_used: ["Nextjs", "React-Hook-Form"],
+    slug: "vaultwill",
+    title: "VaultWill",
+    tagline: "Inheritance protocol on Solana — silence is the trigger",
     description:
-      " Full Stack Developer Skilled In Front-End Technologies Like React.Js,Nextjs, HTML, CSS, JavaScript And Back-End Technologies Such As Node.Js,Express.Js And Databases Like MongoDB,MySQL. Proficient In Programming And Passionate About Creating Efficient, User-Friendly Web Applications. Constantly Learning And Adapting To New Technologies To Stay Ahead In The Ever-Evolving Tech Landscape.",
-  },
-  {
-    id: "45678sdhj",
-    Imgsrc: Batify_Project,
-    Live_Project_url: "https://yatirly.yashchopra.tech/",
-    Github_Project_url: "https://github.com/YashChopra25/Yatirly",
-    target:
-      "Responsive layout, Channel page, Search for videos and channels, Get videos of different category.",
-    Title: "Yatirly -An shorter of URL and QR code generator",
-    Techniogy_used: ["React", "Express", "PRISMA", "Typescript"],
-    description:
-      "Yatirly is an innovative and user-friendly application designed to make sharing URLs more convenient and efficient. With the growing need for short, shareable links, Batify provides a seamless solution for users to shorten long URLs, making them more manageable and user-friendly. The application also incorporates a powerful QR code generation feature, allowing users to create scannable codes directly from the shortened URLs, making it even easier to share links via physical or digital means. Built using React for an interactive and responsive frontend experience, Express as the backend framework for robust API handling, Prisma as the ORM for efficient database management, and TypeScript to enhance type safety and code clarity, Batify provides a modern, scalable solution for URL management.",
-  },
-  {
-    id: "45678sdhj",
-    Imgsrc: Yatify_Project,
-    Live_Project_url: "#",
-    Github_Project_url: "https://github.com/YashChopra25/yatify",
-    target:
-      "Responsive layout, Channel page, Search for videos and channels, Get videos of different category.",
-    Title: "Yatify-Integrated Chat App",
-    Techniogy_used: [
-      "React",
-      "Express",
-      "MongoDB",
-      "socket",
-      "kafka",
-      "RabbitMQ",
+      "A decentralized dead-man's-switch will. Seal documents, keys and final messages on IPFS, name your heirs and appoint custodians. Go quiet for long enough and, once a custodian quorum confirms, the program hands over exactly what you sealed to exactly who you named.",
+    highlights: [
+      "Encrypted files on IPFS with content hashes recorded on-chain",
+      "Weighted beneficiary allocations across multiple heirs",
+      "M-of-N custodian quorum — no single party can trigger a release",
+      "Inactivity timer the owner resets by checking in; fully non-custodial with no admin keys",
     ],
-    description:
-      "Yatify is a real-time collaboration app built with the MERN stack (MongoDB, Express, React, Node.js), leveraging Socket.IO for instant communication and updates. It integrates Kafka and RabbitMQ for efficient message brokering and event-driven processing, ensuring seamless asynchronous workflows. With Docker, Yatify enables containerized deployment for scalable and consistent environments across development and production. The responsive React frontend delivers an engaging user experience, while the Node.js backend ensures robust performance and scalability. Ideal for team collaboration and event tracking, Yatify combines real-time functionality with high availability, making it a reliable solution for modern communication and enterprise-grade scalability needs.",
+    image: VaultWillImage,
+    liveUrl: "https://inheritance-protocol-rahp.vercel.app/",
+    githubUrl: "https://github.com/YashChopra25/inheritance_protocol",
+    tech: ["Rust", "Anchor", "Solana", "IPFS", "Next.js", "TypeScript"],
+    category: "Web3",
+    featured: true,
+    badge: "New",
   },
   {
-    id: "yahkjds",
-    Imgsrc: Dragging,
-    Live_Project_url: "https://todos-credential.vercel.app/",
-    Github_Project_url: "https://github.com/YashChopra25/TodosCredential",
-    target:
-      "Responsive layout, Channel page, Search for videos and channels, Get videos of different category.",
-    Title: "Dragging",
-    Techniogy_used: [
-      "Nextjs",
-      "Express",
-      "React-Hook-Form",
-      "react-beautiful-dnd",
-      "TailwindCSS",
-      "JS",
-    ],
+    slug: "chainview",
+    title: "ChainView",
+    tagline: "Real-time Solana analytics dashboard",
     description:
-      "This project utilizes a modern tech stack to build scalable, interactive web applications. It includes Radix UI components for accessible and customizable design elements like Dialog, Popover, and Select. State management is streamlined with Redux Toolkit, while drag-and-drop functionality is powered by `react-beautiful-dnd`. Styling is enhanced with Tailwind utilities, `clsx`, and animation plugins. Libraries like `axios` handle API calls, `jsonwebtoken` manages authentication, and `date-fns` simplifies date operations. Built with React, Next.js, and supporting tools, this setup ensures a responsive, efficient, and developer-friendly environment for crafting dynamic user experiences.",
+      "A Web3 analytics platform that surfaces real-time blockchain data — track transactions, monitor wallet activity and analyse network trends through a responsive, data-rich interface.",
+    image: ChainViewImage,
+    liveUrl: "https://chain-view-web3.vercel.app/",
+    githubUrl: "https://github.com/YashChopra25/ChainView-Web3",
+    tech: ["Solana", "Web3.js", "Metaplex", "Anza Wallet Adapter", "Next.js", "TailwindCSS"],
+    category: "Web3",
   },
   {
-    id: "1",
-    Imgsrc: Youtube_Project,
-    Live_Project_url: "https://youtubeclone-devyash.vercel.app/",
-    Github_Project_url: "https://github.com/YashChopra25/Youtube_Clone",
-    target:
-      "Responsive layout, Channel page, Search for videos and channels, Get videos of different category.",
-    Title: "Youtube clone",
-    Techniogy_used: ["React", "TailwindCSS", "JS"],
+    slug: "yatirly",
+    title: "Yatirly",
+    tagline: "URL shortener & QR code generator",
     description:
-      "The YouTube clone project is a web application created using React and essential libraries/tools like Axios for HTTP requests, Moment for date/time formatting, and React Router for navigation. It incorporates features such as video playback using React Player, search functionality, and interaction with videos. UI elements are styled using Tailwind CSS, and icons are included using React Icons. Testing utilities from Testing Library ensure code reliability. The project aims to mimic YouTube's core functionalities, including video browsing, playback, and user engagement, providing a familiar and seamless experience for users interacting with videos and related content.",
+      "Shorten long links into clean, shareable URLs and instantly generate scannable QR codes for them. A React frontend over an Express + Prisma API, written end-to-end in TypeScript.",
+    image: YatirlyImage,
+    liveUrl: "https://yatirly.yashchopra.tech/",
+    githubUrl: "https://github.com/YashChopra25/Yatirly",
+    tech: ["React", "Express", "Prisma", "TypeScript"],
+    category: "Full Stack",
   },
   {
-    id: "2",
-    Imgsrc: Firebase_Project,
-    Live_Project_url: "https://firebaseappbyyash.vercel.app",
-    Github_Project_url:
-      "https://github.com/YashChopra25/Todo_list_using_Firebase",
-    target: "_Firebase_Todo_App",
-    Title: "Firebase todo app",
-    Techniogy_used: ["Nextjs", "Firebase", "TailwindCSS"],
+    slug: "yatify",
+    title: "Yatify",
+    tagline: "Real-time collaboration & chat",
     description:
-      "Creating a Todo App involves more than just building a simple task management system.It encompasses designing a user- friendly interface, implementing efficient data management, ensuring real - time updates, handling user authentication, and deploying the application securely.In this detailed discussion, we'll explore each aspect in-depth, focusing on the technologies mentioned in the project's dependencies: React, Next.js, Firebase, and React Toastify.",
+      "A MERN real-time collaboration app using Socket.IO for instant messaging, Kafka and RabbitMQ for event-driven asynchronous workflows, and Docker for consistent, scalable deployments.",
+    image: YatifyImage,
+    githubUrl: "https://github.com/YashChopra25/yatify",
+    tech: ["React", "Express", "MongoDB", "Socket.IO", "Kafka", "RabbitMQ"],
+    category: "Full Stack",
   },
   {
-    id: "3",
-    Imgsrc: Blog_Project,
-    Live_Project_url: "https://blogpostingproject-devyash.vercel.app/",
-    Github_Project_url: "https://github.com/YashChopra25/blogpostingproject",
-    target: "_blog",
-    Title: "Blog posting app",
-    Techniogy_used: ["React", "Appwrite", "React-Hook-Form"],
+    slug: "dragging",
+    title: "Dragging",
+    tagline: "Drag-and-drop task board",
     description:
-      "Our Blog Posting App is a comprehensive platform designed to streamline the process of creating, managing, and sharing blog content. Leveraging a powerful tech stack including React, Redux Toolkit, Appwrite, and essential libraries, this app offers a range of features to enhance user experience and productivity.",
+      "A kanban-style task manager with smooth drag-and-drop via react-beautiful-dnd, accessible Radix UI primitives, Redux Toolkit state and JWT-based authentication.",
+    image: DraggingImage,
+    liveUrl: "https://todos-credential.vercel.app/",
+    githubUrl: "https://github.com/YashChopra25/TodosCredential",
+    tech: ["Next.js", "Express", "Redux Toolkit", "react-beautiful-dnd", "React Hook Form", "TailwindCSS"],
+    category: "Full Stack",
+  },
+  {
+    slug: "portfolio",
+    title: "This Portfolio",
+    tagline: "The site you're looking at",
+    description:
+      "A futuristic Next.js portfolio with an aurora grid backdrop, a circular View Transitions theme switch, framer-motion reveals and a Nodemailer-powered contact form.",
+    image: PortfolioImage,
+    liveUrl: "https://yashchopraportfolio.vercel.app/",
+    githubUrl: "https://github.com/YashChopra25/PortFolio-YashChopra",
+    tech: ["Next.js", "TypeScript", "TailwindCSS", "Framer Motion", "Nodemailer"],
+    category: "Full Stack",
+  },
+  {
+    slug: "youtube-clone",
+    title: "YouTube Clone",
+    tagline: "Video browsing & playback",
+    description:
+      "Recreates YouTube's core experience — category feeds, channel pages, search and in-app playback with React Player — styled with Tailwind CSS.",
+    image: YoutubeImage,
+    liveUrl: "https://youtubeclone-devyash.vercel.app/",
+    githubUrl: "https://github.com/YashChopra25/Youtube_Clone",
+    tech: ["React", "React Router", "Axios", "TailwindCSS"],
+    category: "Full Stack",
+  },
+  {
+    slug: "firebase-todo",
+    title: "Firebase Todo",
+    tagline: "Real-time task manager",
+    description:
+      "A Next.js todo app with Firebase authentication and real-time data sync, so tasks update instantly across sessions.",
+    image: FirebaseImage,
+    liveUrl: "https://firebaseappbyyash.vercel.app",
+    githubUrl: "https://github.com/YashChopra25/Todo_list_using_Firebase",
+    tech: ["Next.js", "Firebase", "TailwindCSS"],
+    category: "Full Stack",
+  },
+  {
+    slug: "blog-app",
+    title: "Blog Posting App",
+    tagline: "Write, manage & publish",
+    description:
+      "A blogging platform for creating, editing and sharing posts, with Appwrite handling auth, database and storage, Redux Toolkit for state and React Hook Form for editing flows.",
+    image: BlogImage,
+    liveUrl: "https://blogpostingproject-devyash.vercel.app/",
+    githubUrl: "https://github.com/YashChopra25/blogpostingproject",
+    tech: ["React", "Appwrite", "Redux Toolkit", "React Hook Form"],
+    category: "Full Stack",
   },
 ];

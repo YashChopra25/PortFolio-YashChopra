@@ -1,112 +1,120 @@
-"use client"
-
-import React from 'react'
-import { Typewriter } from 'react-simple-typewriter'
 import Link from "next/link"
-import { motion } from 'framer-motion'
-import { FaGithub, FaLinkedin } from "react-icons/fa6"
-import { RiTwitterXFill } from "react-icons/ri"
-import { SiLeetcode } from 'react-icons/si'
-import { ArrowRight, Download } from 'lucide-react'
+import { ArrowUpRight, Blocks, Layers, Sparkles } from "lucide-react"
+import Hero from "./_components/Hero"
+import TechMarquee from "./_components/TechMarquee"
+import Reveal from "./_components/Reveal"
+import SectionHeading from "./_components/SectionHeading"
+import ProjectCard from "./_components/ProjectCard"
+import { projects } from "./_utilities/datafileds/Project"
+import { ExperienceData } from "./_utilities/datafileds/Experience"
+
+const capabilities = [
+  {
+    icon: Blocks,
+    title: "Protocols & smart contracts",
+    body: "Solidity and Rust/Anchor programs backed by real test suites — bonding curves, custodian quorums, token launches and on-chain registries.",
+    tags: ["Solidity", "Rust · Anchor", "Foundry"],
+  },
+  {
+    icon: Layers,
+    title: "Full-stack product engineering",
+    body: "Production Next.js, Node and Python services on Postgres, MongoDB and Supabase, deployed across AWS, GCP and Vercel.",
+    tags: ["Next.js", "Node.js", "Python"],
+  },
+  {
+    icon: Sparkles,
+    title: "Interfaces that feel alive",
+    body: "Responsive, accessible UIs with motion that guides rather than distracts — wallets, dashboards and builders people enjoy using.",
+    tags: ["React", "Tailwind", "Framer Motion"],
+  },
+]
 
 export default function Home() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    },
-  }
+  const featured = projects.filter((project) => project.featured)
+  const stats = [
+    { value: `${projects.length}+`, label: "Projects shipped" },
+    { value: "3", label: "Chains built on" },
+    { value: "2+", label: "Years in production" },
+    { value: `${ExperienceData.length}`, label: "Engineering roles" },
+  ]
 
   return (
-    <main className="relative min-h-[calc(100vh-80px)] overflow-hidden flex items-center justify-center py-20 px-4">
-      {/* Background Decorative Elements */}
-      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/20 rounded-full blur-[120px] -z-10" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-500/10 rounded-full blur-[120px] -z-10" />
+    <>
+      <Hero resumeLink={process.env.RESUME_DRIVE_LINK} />
+      <TechMarquee />
 
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="max-w-4xl w-full text-center space-y-12"
-      >
-        <motion.div variants={itemVariants} className="space-y-4">
-          <h2 className="text-xl md:text-2xl font-medium text-primary tracking-wide">
-            Hi, I&apos;m Yash Chopra
-          </h2>
-          <h1 className="text-5xl md:text-8xl font-bold tracking-tight">
-            I build <span className="text-gradient">exceptional</span> digital experiences.
-          </h1>
-        </motion.div>
-
-        <motion.div variants={itemVariants} className="h-16 text-2xl md:text-4xl font-semibold text-muted-foreground">
-          <Typewriter
-            words={['Frontend Developer', 'Backend Developer', 'Full Stack Engineer', 'UI/UX Enthusiast']}
-            loop={0}
-            cursor
-            cursorStyle='_'
-            typeSpeed={70}
-            deleteSpeed={50}
-            delaySpeed={2000}
+      <section className="mx-auto max-w-6xl px-5 py-28">
+        <Reveal>
+          <SectionHeading
+            eyebrow="What I do"
+            title={
+              <>
+                From <span className="text-gradient">smart contracts</span> to pixels.
+              </>
+            }
+            description="I work across the whole stack — the on-chain logic, the services around it, and the interface on top."
           />
-        </motion.div>
+        </Reveal>
 
-        <motion.p variants={itemVariants} className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground leading-relaxed">
-          I specialize in crafting high-performance, accessible, and visually stunning web applications
-          that solve real-world problems.
-        </motion.p>
-
-        <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center gap-6">
-          <Link
-            href="/contact"
-            className="group relative px-8 py-4 bg-primary text-primary-foreground rounded-full font-semibold overflow-hidden transition-all hover:scale-105 active:scale-95 flex items-center gap-2"
-          >
-            Hire me
-            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-          </Link>
-          <a
-            href={process.env.RESUME_LINK || "#"}
-            className="px-8 py-4 border border-border hover:bg-muted/50 rounded-full font-semibold transition-all hover:scale-105 active:scale-95 flex items-center gap-2"
-            download="YashChopraResume.pdf"
-          >
-            Resume
-            <Download className="w-5 h-5" />
-          </a>
-        </motion.div>
-
-        <motion.div variants={itemVariants} className="flex justify-center gap-8 pt-8 border-t border-border/50">
-          {[
-            { icon: FaLinkedin, href: "https://www.linkedin.com/in/yashchopra25/", color: "hover:text-[#0077b5]", label: "LinkedIn" },
-            { icon: FaGithub, href: "https://github.com/YashChopra25/", color: "hover:text-foreground", label: "GitHub" },
-            { icon: RiTwitterXFill, href: "https://twitter.com/YashChopra25", color: "hover:text-foreground", label: "X" },
-            { icon: SiLeetcode, href: "https://leetcode.com/YashChopra25/", color: "hover:text-[#ffa116]", label: "LeetCode" }
-          ].map((social, index) => (
-            <Link
-              key={index}
-              href={social.href}
-              target="_blank"
-              className={`text-muted-foreground transition-all duration-300 hover:-translate-y-1 ${social.color}`}
-            >
-              <social.icon size={28} />
-              <span className="sr-only">{social.label} focus:outline-none Profile</span>
-            </Link>
+        <div className="mt-14 grid gap-4 md:grid-cols-3">
+          {capabilities.map(({ icon: Icon, title, body, tags }, index) => (
+            <Reveal key={title} delay={index * 0.1} className="glow-border glass group h-full rounded-3xl p-7">
+              <div className="mb-6 grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-primary/20 to-glow/20 text-primary ring-1 ring-primary/30 transition-shadow group-hover:shadow-[0_0_30px_-4px_hsl(var(--primary)/0.7)]">
+                <Icon size={22} />
+              </div>
+              <h3 className="font-display text-xl font-semibold">{title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{body}</p>
+              <ul className="mt-6 flex flex-wrap gap-1.5">
+                {tags.map((tag) => (
+                  <li key={tag} className="rounded-md border border-border/70 bg-muted/40 px-2 py-0.5 font-mono text-[11px] text-muted-foreground">
+                    {tag}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
           ))}
-        </motion.div>
-      </motion.div>
-    </main>
+        </div>
+
+        <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-4">
+          {stats.map((stat, index) => (
+            <Reveal key={stat.label} delay={index * 0.08} className="glass rounded-3xl p-6">
+              <p className="text-gradient font-display text-4xl font-bold md:text-5xl">{stat.value}</p>
+              <p className="mt-2 text-sm text-muted-foreground">{stat.label}</p>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-5">
+        <Reveal>
+          <SectionHeading
+            eyebrow="Selected work"
+            title={
+              <>
+                Freshly <span className="text-gradient">deployed</span>.
+              </>
+            }
+            description="My latest builds — open source, with live demos you can click through right now."
+            action={
+              <Link
+                href="/project"
+                className="group inline-flex w-fit items-center gap-2 rounded-full border border-border bg-card/50 px-5 py-3 text-sm font-semibold backdrop-blur transition hover:border-primary/60 hover:text-primary"
+              >
+                All {projects.length} projects
+                <ArrowUpRight size={16} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </Link>
+            }
+          />
+        </Reveal>
+
+        <div className="mt-14 space-y-6">
+          {featured.map((project, index) => (
+            <Reveal key={project.slug}>
+              <ProjectCard project={project} index={index} size="large" />
+            </Reveal>
+          ))}
+        </div>
+      </section>
+    </>
   )
 }

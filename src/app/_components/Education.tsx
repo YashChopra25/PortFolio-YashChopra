@@ -1,26 +1,23 @@
-import React from 'react'
-import { EducationData } from '../_utilities/datafileds/Education'
+import { GraduationCap } from "lucide-react"
+import { EducationData } from "../_utilities/datafileds/Education"
 
-const Education = () => {
+export default function Education() {
     return (
-        <div className="space-y-8">
-            {EducationData.map((data, index) => (
-                <div key={index} className="relative pl-6 border-l border-primary/30 space-y-2">
-                    <div className="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-primary" />
-
-                    <h3 className="text-xl font-bold">{data.from}</h3>
-
-                    <div className="space-y-1">
-                        {data.description.map((item, i) => (
-                            <p key={i} className="text-sm text-muted-foreground leading-relaxed">
-                                {item}
-                            </p>
-                        ))}
+        <ol className="space-y-3">
+            {EducationData.map((edu) => (
+                <li key={edu.degree} className="glow-border glass flex gap-4 rounded-2xl p-5">
+                    <span className="grid h-10 w-10 flex-shrink-0 place-items-center rounded-xl bg-gradient-to-br from-primary/15 to-glow/15 text-primary ring-1 ring-primary/25">
+                        <GraduationCap size={18} />
+                    </span>
+                    <div className="min-w-0 flex-1">
+                        <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                            <h3 className="font-display font-semibold leading-snug">{edu.degree}</h3>
+                            <span className="font-mono text-xs text-primary">{edu.year}</span>
+                        </div>
+                        <p className="mt-1 text-sm text-muted-foreground">{edu.institution}</p>
                     </div>
-                </div>
+                </li>
             ))}
-        </div>
+        </ol>
     )
 }
-
-export default Education

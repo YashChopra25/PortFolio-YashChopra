@@ -1,74 +1,69 @@
-import React from 'react'
-import Image from 'next/image'
-import { skillSet } from '../_utilities/datafileds/SkillSet'
+"use client"
 
-const Skill = () => {
-    // Helper to get icon URL from Devicon or other sources
-    const getIconUrl = (name: string) => {
-        const lowerName = name.toLowerCase().replace('.', '').replace(' ', '');
+import { useState } from "react"
+import { skillSet, type SkillItem } from "../_utilities/datafileds/SkillSet"
 
-        // Custom overrides for specific names
-        const map: Record<string, string> = {
-            'nextjs': 'nextjs/nextjs-original.svg',
-            'tailwindcss': 'tailwindcss/tailwindcss-original.svg',
-            'typescript': 'typescript/typescript-original.svg',
-            'react': 'react/react-original.svg',
-            'nodejs': 'nodejs/nodejs-original.svg',
-            'express': 'express/express-original.svg',
-            'python': 'python/python-original.svg',
-            'mongodb': 'mongodb/mongodb-original.svg',
-            'postgresql': 'postgresql/postgresql-original.svg',
-            'mysql': 'mysql/mysql-original.svg',
-            'aws': 'amazonwebservices/amazonwebservices-original-wordmark.svg',
-            'docker': 'docker/docker-original.svg',
-            'git': 'git/git-original.svg',
-            'solidity': 'solidity/solidity-original.svg',
-            'html5': 'html5/html5-original.svg',
-            'css3': 'css3/css3-original.svg',
-            'flask': 'flask/flask-original.svg',
-        };
+const DEVICON_BASE = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/"
 
-        const path = map[lowerName] || `${lowerName}/${lowerName}-original.svg`;
-        return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${path}`;
+const initialsOf = (name: string) =>
+    name
+        .replace(/\(.*\)/, "")
+        .split(/[\s.]+/)
+        .filter(Boolean)
+        .slice(0, 2)
+        .map((word) => word[0])
+        .join("")
+        .toUpperCase()
+
+function SkillIcon({ skill }: { skill: SkillItem }) {
+    const [failed, setFailed] = useState(false)
+
+    if (!skill.icon || failed) {
+        return (
+            <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-primary/20 to-glow/20 font-mono text-[11px] font-bold text-primary">
+                {initialsOf(skill.name)}
+            </span>
+        )
     }
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12">
-            {skillSet.map((category, index) => (
-                <div key={index} className="space-y-6">
-                    <div className="flex items-center gap-3">
-                        <div className="w-2 h-2 rounded-full bg-primary" />
-                        <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-primary">
-                            {category.category}
-                        </h3>
-                    </div>
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+            src={`${DEVICON_BASE}${skill.icon}`}
+            alt=""
+            loading="lazy"
+            onError={() => setFailed(true)}
+            className={`h-8 w-8 object-contain ${skill.mono ? "dark:invert" : ""}`}
+        />
+    )
+}
 
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                        {category.skills.map((skill, i) => (
-                            <div
-                                key={i}
-                                className="group flex flex-col items-center justify-center p-4 rounded-2xl bg-muted/30 border border-border/50 hover:border-primary/50 hover:bg-muted/50 transition-all duration-300 gap-3"
+export default function Skill() {
+    return (
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {skillSet.map((category, index) => (
+                <div key={category.category} className="glow-border glass rounded-3xl p-6">
+                    <div className="mb-5 flex items-center justify-between">
+                        <h3 className="font-display text-lg font-semibold">{category.category}</h3>
+                        <span className="font-mono text-xs text-muted-foreground">{String(index + 1).padStart(2, "0")}</span>
+                    </div>
+                    <ul className="grid grid-cols-2 gap-2">
+                        {category.skills.map((skill) => (
+                            <li
+                                key={skill.name}
+                                className="group flex items-center gap-3 rounded-xl border border-border/50 bg-background/40 p-2.5 transition hover:border-primary/50 hover:bg-primary/5"
                             >
-                                <div className="relative w-10 h-10 transition-transform duration-300 group-hover:scale-110">
-                                    <img
-                                        src={getIconUrl(skill.name)}
-                                        alt={skill.name}
-                                        className="w-full h-full object-contain transition-all duration-300"
-                                        onError={(e) => {
-                                            (e.target as HTMLImageElement).src = 'https://www.svgrepo.com/show/512317/github-142.svg'; // Fallback icon
-                                        }}
-                                    />
-                                </div>
-                                <span className="text-xs font-medium text-muted-foreground group-hover:text-foreground transition-colors text-center">
+                                <span className="flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
+                                    <SkillIcon skill={skill} />
+                                </span>
+                                <span className="text-sm leading-tight text-muted-foreground transition-colors group-hover:text-foreground">
                                     {skill.name}
                                 </span>
-                            </div>
+                            </li>
                         ))}
-                    </div>
+                    </ul>
                 </div>
             ))}
         </div>
     )
 }
-
-export default Skill
