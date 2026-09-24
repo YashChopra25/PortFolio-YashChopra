@@ -87,7 +87,7 @@ export const projects: Project[] = [
     description:
       "Shorten long links into clean, shareable URLs and instantly generate scannable QR codes for them. A React frontend over an Express + Prisma API, written end-to-end in TypeScript.",
     image: YatirlyImage,
-    liveUrl: "https://yatirly.yashchopra.tech/",
+    liveUrl: "https://yatirly.vercel.app/",
     githubUrl: "https://github.com/YashChopra25/Yatirly",
     tech: ["React", "Express", "Prisma", "TypeScript"],
     category: "Full Stack",
