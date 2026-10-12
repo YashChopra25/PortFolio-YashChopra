@@ -16,3 +16,5 @@ export const socials: Social[] = [
   { label: "X", handle: "@YashChopra25", href: "https://twitter.com/YashChopra25", icon: RiTwitterXFill },
   { label: "LeetCode", handle: "YashChopra25", href: "https://leetcode.com/YashChopra25/", icon: SiLeetcode },
 ];
+
+export const email = "dev.yashchopra@gmail.com";

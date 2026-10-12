@@ -4,167 +4,69 @@
 
 @layer base {
   :root {
-    --background: 220 33% 97%;
-    --foreground: 232 40% 8%;
-    --card: 0 0% 100%;
-    --card-foreground: 232 40% 8%;
-    --muted: 222 24% 91%;
-    --muted-foreground: 228 12% 38%;
-    --border: 225 20% 84%;
-    --primary: 192 92% 36%;
-    --primary-foreground: 0 0% 100%;
-    --glow: 262 80% 56%;
-    color-scheme: light;
-  }
-
-  .dark {
-    --background: 234 48% 4%;
-    --foreground: 220 40% 97%;
-    --card: 234 40% 7%;
-    --card-foreground: 220 40% 97%;
-    --muted: 232 28% 12%;
-    --muted-foreground: 226 16% 66%;
-    --border: 232 26% 17%;
-    --primary: 186 94% 56%;
-    --primary-foreground: 234 48% 5%;
-    --glow: 266 92% 70%;
+    --bg: 14 14 16;
+    --surface: 23 23 26;
+    --ink: 244 243 239;
+    --ink-soft: 184 182 174;
+    --ink-faint: 125 122 114;
+    --line: 42 42 46;
+    --accent: 125 211 192;
     color-scheme: dark;
   }
 
   * {
-    @apply border-border;
+    @apply border-line;
   }
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
   }
 
   body {
-    @apply bg-background font-sans text-foreground antialiased;
+    @apply bg-bg font-sans text-[17px] leading-relaxed text-ink antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-semibold tracking-[-0.02em];
   }
 
   ::selection {
-    background: hsl(var(--primary) / 0.3);
+    @apply bg-accent text-bg;
+  }
+
+  :focus-visible {
+    @apply rounded-sm outline outline-2 outline-offset-2 outline-accent;
   }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@layer components {
+  .wrap {
+    @apply mx-auto w-full max-w-wrap px-5 sm:px-8;
   }
 
-  .text-gradient {
-    background-image: linear-gradient(100deg, hsl(var(--primary)), hsl(var(--glow)) 55%, hsl(326 90% 64%));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+  .eyebrow {
+    @apply mb-6 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.16em] text-accent;
   }
 
-  .glass {
-    background: hsl(var(--card) / 0.55);
-    border: 1px solid hsl(var(--border) / 0.7);
-    -webkit-backdrop-filter: blur(18px) saturate(140%);
-    backdrop-filter: blur(18px) saturate(140%);
+  .eyebrow::before {
+    content: "";
+    @apply h-px w-6 bg-accent/50;
   }
 
-  .bg-grid {
-    background-image: linear-gradient(hsl(var(--foreground) / 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--foreground) / 0.05) 1px, transparent 1px);
-    background-size: 64px 64px;
+  .btn {
+    @apply inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-2.5 text-sm font-medium transition hover:-translate-y-px hover:border-ink;
   }
 
-  .mask-radial {
-    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 100%);
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 100%);
+  .btn-primary {
+    @apply border-ink bg-ink text-bg hover:border-accent hover:bg-accent;
   }
 
-  .mask-fade-x {
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  .chip {
+    @apply rounded-full border border-line px-2.5 py-1 font-mono text-xs text-ink-soft;
   }
-}
-
-/* Animated conic border that lights up on hover (or always, with data-active) */
-@property --angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
-
-@keyframes border-spin {
-  to {
-    --angle: 360deg;
-  }
-}
-
-.glow-border {
-  position: relative;
-  isolation: isolate;
-}
-
-.glow-border::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  z-index: 1;
-  padding: 1px;
-  border-radius: inherit;
-  background: conic-gradient(
-    from var(--angle),
-    transparent 0 55%,
-    hsl(var(--primary)) 72%,
-    hsl(var(--glow)) 88%,
-    transparent
-  );
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.4s ease;
-  animation: border-spin 6s linear infinite;
-}
-
-.glow-border:hover::before,
-.glow-border[data-active="true"]::before {
-  opacity: 1;
-}
-
-/* Cursor-following highlight; --mx/--my are set from JS */
-.spotlight::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), hsl(var(--primary) / 0.12), transparent 45%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.spotlight:hover::after {
-  opacity: 1;
-}
-
-/* Circular theme reveal is driven from ThemeToggle */
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation: none;
-  mix-blend-mode: normal;
-}
-
-*::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-*::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-*::-webkit-scrollbar-thumb {
-  border-radius: 9999px;
-  background: linear-gradient(hsl(var(--primary) / 0.6), hsl(var(--glow) / 0.6));
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -175,8 +77,6 @@
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 }

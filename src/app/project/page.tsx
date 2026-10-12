@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
-import Reveal from "../_components/Reveal"
-import SectionHeading from "../_components/SectionHeading"
-import ProjectGrid from "../_components/ProjectGrid"
+import WorkList from "../_components/WorkList"
+import { projects } from "../_utilities/datafileds/Project"
 
 export const metadata: Metadata = {
     title: "Projects",
@@ -10,21 +9,13 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
     return (
-        <div className="mx-auto max-w-6xl space-y-14 px-5 pt-36">
-            <Reveal>
-                <SectionHeading
-                    as="h1"
-                    align="center"
-                    eyebrow="Projects"
-                    title={
-                        <>
-                            Things I&apos;ve <span className="text-gradient">shipped</span>.
-                        </>
-                    }
-                    description="From on-chain protocols to full-stack apps — a collection of products, experiments and open-source builds."
-                />
-            </Reveal>
-            <ProjectGrid />
-        </div>
+        <section className="wrap py-16 sm:py-24">
+            <p className="eyebrow">Projects</p>
+            <h1 className="mb-4 text-[clamp(2.2rem,7vw,3.75rem)] leading-[1.08]">Everything I&apos;ve shipped.</h1>
+            <p className="mb-12 max-w-[56ch] text-ink-soft">
+                From on-chain protocols to full-stack apps — products, experiments and open-source builds.
+            </p>
+            <WorkList projects={projects} />
+        </section>
     )
 }

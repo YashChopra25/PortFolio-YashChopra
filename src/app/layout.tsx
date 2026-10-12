@@ -1,14 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/react";
-import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "./providers";
-import Background from "@/app/_components/Background";
-import Navbar from "@/app/_components/Navbar";
+import Nav from "@/app/_components/Nav";
 import Footer from "@/app/_components/Footer";
 
 const sans = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
-const display = Space_Grotesk({ subsets: ["latin"], variable: "--font-display", display: "swap" });
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", display: "swap" });
 
 const siteUrl = "https://yashchopraportfolio.vercel.app";
@@ -46,7 +43,7 @@ export const metadata: Metadata = {
     url: siteUrl,
     siteName: "Yash Chopra Portfolio",
     title: "Yash Chopra | Full Stack & Web3 Developer",
-    description: "Engineering the on-chain future — protocols, full-stack products and interfaces that feel alive.",
+    description: "Full Stack & Web3 engineer building smart contracts, Solana programs and full-stack products.",
     images: [
       {
         url: "/og-image.png",
@@ -77,10 +74,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f4f6fb" },
-    { media: "(prefers-color-scheme: dark)", color: "#05060f" },
-  ],
+  themeColor: "#0e0e10",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
@@ -89,17 +84,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${sans.variable} ${display.variable} ${mono.variable}`}>
+    <html lang="en" className={`${sans.variable} ${mono.variable}`}>
       <body>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-          <Background />
-          <Navbar />
-          <div className="relative flex min-h-screen flex-col">
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </div>
-          <Analytics />
-        </ThemeProvider>
+        <div className="flex min-h-screen flex-col">
+          <Nav />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </div>
+        <Analytics />
       </body>
     </html>
   );
